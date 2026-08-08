@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="RevampOfEmpire/RevampOfEmpire.vcxproj" Id="050bc1ad-6377-4bc9-869f-ea8a5d35cfd4" />
+</Solution>
