@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Collision\Collision.cpp" />
+    <ClCompile Include="Engine\FPS\fps.cpp" />
     <ClCompile Include="Engine\Texture\Texture.cpp" />
     <ClCompile Include="RevampOfEmpire.cpp" />
     <ClCompile Include="src\Player.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="Engine\Collision\Collision.h" />
     <ClInclude Include="Engine\Collision\SpecialType.h" />
     <ClInclude Include="Engine\Collision\type.h" />
+    <ClInclude Include="Engine\FPS\fps.h" />
     <ClInclude Include="Engine\Texture\Texture.h" />
     <ClInclude Include="headers\Player.h" />
   </ItemGroup>
