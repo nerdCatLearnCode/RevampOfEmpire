@@ -2,13 +2,15 @@
 #include <SDL3/SDL.h>
 #include <Engine/Collision/Collision.h>
 #include <headers/Player.h>
-#include <headers/player2.h>
+#include <FPS/fps.h>
 
 
 bool running = true;
 
 int WIDTH = 1080;
 int HEIGHT = 720;
+
+Engine::FPS fps;
 
 int GetScaleWidth()
 {
@@ -59,6 +61,7 @@ int main()
 		//update
 		collisionManager.Update();
 		player.Update();
+		fps.Update();
 
 		//Render
 		player.Render();
