@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Animated\Animated.h" />
+    <ClInclude Include="Engine\Animated\Mode.h" />
     <ClInclude Include="Engine\Collision\Collision.h" />
     <ClInclude Include="Engine\Collision\SpecialType.h" />
     <ClInclude Include="Engine\Collision\type.h" />

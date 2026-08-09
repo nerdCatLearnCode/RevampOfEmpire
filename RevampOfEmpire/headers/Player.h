@@ -2,6 +2,7 @@
 
 #include <Texture/Texture.h>
 #include <Collision/Collision.h>
+#include <Animated/Animated.h>
 
 using namespace Engine;
 
@@ -18,6 +19,7 @@ public:
 
 private:
 	Collider* collider;
+	Engine::Animated* animated;
 
 	float w, h, x, y;
 	float srcX, srcY, srcW, srcH;

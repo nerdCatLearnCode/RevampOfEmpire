@@ -4,6 +4,10 @@ Player::Player(SDL_Renderer* renderer_, Engine::CollisionManager& collisionManag
 	: renderer(renderer_)
 {
 	collider = new Collider;
+	animated = new Engine::Animated(64, 80, 64*4, 80);
+
+	animated->PlayRange(0, 0, 64 * 4, 80, 8);
+	animated->SetMode(Mode::Loop);
 
 	x = y = 512;
 
@@ -32,11 +36,15 @@ Player::Player(SDL_Renderer* renderer_, Engine::CollisionManager& collisionManag
 Player::~Player()
 {
 	delete collider;
+	delete animated;
 }
 
 void Player::Render()
 {
 	Engine::RenderTexture sprite(renderer, IMG_Load("D:/CppProject/RevampOfEmpire/RevampOfEmpire/assets/texture/Idle-Sheet.png"));
+
+	srcX = animated->GetSrcX();
+	srcY = animated->GetSrcY();
 
 	SDL_FRect src =
 	{
@@ -59,6 +67,7 @@ void Player::Render()
 
 void Player::Update()
 {
+	animated->Update();
 	if (!collider->isCollide)
 	{
 		SDL_Log("collide!");
