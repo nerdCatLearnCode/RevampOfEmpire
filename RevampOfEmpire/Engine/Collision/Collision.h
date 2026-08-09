@@ -1,18 +1,15 @@
 #pragma once
 
 #include <SDL3/SDL.h>
+#include <Math/Vector2.h>
 #include <vector>
 #include <algorithm>
 #include <string>
 
 namespace Engine
 {
-	typedef struct Vector2
-	{
-		float x, y;
-	};
 
-	typedef struct Collider
+	struct Collider
 	{
 		Vector2 pos;
 		Vector2 size;

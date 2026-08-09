@@ -55,9 +55,6 @@ int main()
 		//Update
 		manager->Update();
 
-		//Render
-		manager->Render();
-
 		SDL_RenderPresent(renderer);
 	}
 

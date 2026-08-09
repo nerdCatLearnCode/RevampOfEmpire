@@ -13,6 +13,10 @@ Player::Player(SDL_Renderer* renderer_, Engine::Engines& engine)
 	animated->PlayRange(0, 0, 64 * 4, 80, fps);
 	animated->SetMode(Mode::Loop);
 
+	SetZIndex(1);
+	SetScale({ -2, -2 });
+
+
 	x = y = 512;
 
 	w = srcW = 64;
@@ -63,8 +67,8 @@ void Player::Render()
 	{
 		x,
 		y,
-		w,
-		h
+		w*GetScale().x,
+		h*GetScale().y
 	};
 
 	sprite.Render(src, dst);
