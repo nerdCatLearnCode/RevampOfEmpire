@@ -4,5 +4,4 @@ enum class Mode
 {
 	Once,
 	Loop,
-	Reverse,
 };

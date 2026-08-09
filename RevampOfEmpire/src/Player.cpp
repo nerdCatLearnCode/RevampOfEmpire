@@ -1,12 +1,16 @@
 #include "../headers/Player.h"
 
-Player::Player(SDL_Renderer* renderer_, Engine::CollisionManager& collisionManager)
-	: renderer(renderer_)
+using namespace Engine;
+
+Player::Player(SDL_Renderer* renderer_, Engine::Engines& engine)
+	: renderer(renderer_),
+	engine(&engine),
+	fps(12.0f)
 {
-	collider = new Collider;
+	collider = new Engine::Collider;
 	animated = new Engine::Animated(64, 80, 64*4, 80);
 
-	animated->PlayRange(0, 0, 64 * 4, 80, 8);
+	animated->PlayRange(0, 0, 64 * 4, 80, fps);
 	animated->SetMode(Mode::Loop);
 
 	x = y = 512;
@@ -30,11 +34,12 @@ Player::Player(SDL_Renderer* renderer_, Engine::CollisionManager& collisionManag
 
 	collider->id = "player";
 
-	collisionManager.Add(collider);
+	engine.GetCollisionManager().Add(collider);
 }
 
 Player::~Player()
 {
+	engine->GetCollisionManager().Remove(collider);
 	delete collider;
 	delete animated;
 }

@@ -3,13 +3,12 @@
 #include <Texture/Texture.h>
 #include <Collision/Collision.h>
 #include <Animated/Animated.h>
-
-using namespace Engine;
+#include <Engine.h>
 
 class Player
 {
 public:
-	Player(SDL_Renderer* renderer_, Engine::CollisionManager& collisionManager);
+	Player(SDL_Renderer* renderer_, Engine::Engines& engine);
 
 	~Player();
 
@@ -18,11 +17,13 @@ public:
 	void Update();
 
 private:
-	Collider* collider;
+	Engine::Collider* collider;
 	Engine::Animated* animated;
+	Engine::Engines* engine;
 
 	float w, h, x, y;
 	float srcX, srcY, srcW, srcH;
+	float fps;
 
 	SDL_Renderer* renderer;
 };

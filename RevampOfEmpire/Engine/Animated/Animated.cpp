@@ -51,9 +51,6 @@ namespace Engine
 						m_srcX = startSrcX;
 						m_srcY = startSrcY;
 						break;
-					case Mode::Reverse:
-						direction *= -1;
-						break;
 					default:
 						break;
 					}

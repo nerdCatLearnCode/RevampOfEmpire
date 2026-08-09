@@ -1,16 +1,12 @@
 #include <iostream>
 #include <SDL3/SDL.h>
-#include <Engine/Collision/Collision.h>
-#include <headers/Player.h>
-#include <FPS/fps.h>
+#include <NodeManager/Manager.h>
 
 
 bool running = true;
 
 int WIDTH = 1080;
 int HEIGHT = 720;
-
-Engine::FPS fps;
 
 int GetScaleWidth()
 {
@@ -24,8 +20,6 @@ int GetScaleHeight()
 
 int main()
 {
-	//Engine
-	Engine::CollisionManager collisionManager;
 
 	SDL_Init(SDL_INIT_VIDEO);
 
@@ -44,9 +38,9 @@ int main()
 	renderer = SDL_CreateRenderer(window, nullptr);
 
 	SDL_Event event;
-
-	Player player(renderer, collisionManager);
 	
+	//engine
+	NodeManager::Manager* manager = new NodeManager::Manager(renderer);
 
 	while (running)
 	{
@@ -58,17 +52,16 @@ int main()
 
 		SDL_RenderClear(renderer);
 
-		//update
-		collisionManager.Update();
-		player.Update();
-		fps.Update();
+		//Update
+		manager->Update();
 
 		//Render
-		player.Render();
+		manager->Render();
 
 		SDL_RenderPresent(renderer);
 	}
 
+	delete manager;
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 
