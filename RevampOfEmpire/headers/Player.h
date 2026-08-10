@@ -22,8 +22,6 @@ private:
 	Engine::Animated* animated;
 	Engine::Engines* engine;
 
-	float w, h, x, y;
-	float srcX, srcY, srcW, srcH;
 	float fps;
 
 	SDL_Renderer* renderer;

@@ -14,26 +14,26 @@ Player::Player(SDL_Renderer* renderer_, Engine::Engines& engine)
 	animated->SetMode(Mode::Loop);
 
 	SetZIndex(1);
-	SetScale({ -2, -2 });
+	SetScale({ -2, 2 });
 
 
-	x = y = 512;
+	transform.pos.x = transform.pos.y = 512;
 
-	w = srcW = 64;
-	h = srcH = 80;
+	transform.size.w = transform.src_size.w = 64;
+	transform.size.h = transform.src_size.h = 80;
 
-	srcX = srcY = 0;
+	transform.src.x = transform.src.y = 0;
 
 	collider->pos =
 	{
-		x,
-		y
+		transform.pos.x,
+		transform.pos.y
 	};
 
 	collider->size =
 	{
-		w,
-		h
+		transform.size.w,
+		transform.size.h
 	};
 
 	collider->id = "player";
@@ -52,23 +52,23 @@ void Player::Render()
 {
 	Engine::RenderTexture sprite(renderer, IMG_Load("D:/CppProject/RevampOfEmpire/RevampOfEmpire/assets/texture/Idle-Sheet.png"));
 
-	srcX = animated->GetSrcX();
-	srcY = animated->GetSrcY();
+	transform.src.x = animated->GetSrcX();
+	transform.src.y = animated->GetSrcY();
 
 	SDL_FRect src =
 	{
-		srcX,
-		srcY,
-		srcW,
-		srcH
+		transform.src.x,
+		transform.src.y,
+		transform.src_size.w,
+		transform.src_size.h
 	};
 
 	SDL_FRect dst =
 	{
-		x,
-		y,
-		w*GetScale().x,
-		h*GetScale().y
+		transform.pos.x,
+		transform.pos.y,
+		transform.size.w * GetScale().x,
+		transform.size.h * GetScale().y
 	};
 
 	sprite.Render(src, dst);

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Math/Vector2.h>
+#include <Node/Transform/Transform.h>
 
 namespace Engine
 {
@@ -20,8 +21,7 @@ namespace Engine
 
 		Vector2 GetScale() const;
 
-	private:
-		Vector2 scale;
-		int z_index;
+	public:
+		Transform transform;
 	};
 }

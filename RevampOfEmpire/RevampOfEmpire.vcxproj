@@ -162,6 +162,7 @@
     <ClInclude Include="Engine\FPS\fps.h" />
     <ClInclude Include="Engine\Math\Vector2.h" />
     <ClInclude Include="Engine\Node\Node.h" />
+    <ClInclude Include="Engine\Node\Transform\Transform.h" />
     <ClInclude Include="Engine\Texture\Texture.h" />
     <ClInclude Include="headers\Player.h" />
     <ClInclude Include="Engine\NodeManager\Manager.h" />
