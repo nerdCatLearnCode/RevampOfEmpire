@@ -2,8 +2,9 @@
 
 using namespace Engine;
 
-Player::Player(SDL_Renderer* renderer_, Engine::Engines& engine)
-	: renderer(renderer_),
+Player::Player(SDL_Renderer* renderer_, Engine::Engines& engine, float delta_time)
+	: Node(delta_time),
+	renderer(renderer_),
 	engine(&engine),
 	fps(12.0f)
 {
@@ -77,8 +78,42 @@ void Player::Render()
 void Player::Update()
 {
 	animated->Update();
+	collider->pos =
+	{
+		transform.pos.x,
+		transform.pos.y
+	};
 	if (!collider->isCollide)
 	{
 		SDL_Log("collide!");
+	}
+}
+
+void Player::HandleInput(const SDL_Event& event)
+{
+	if (event.type == SDL_EVENT_KEY_DOWN)
+	{
+		if (event.key.key == SDLK_W)
+		{
+			SDL_Log("W key pressed");
+			transform.pos.y -= 1000*delta_time;
+		}
+		else if (event.key.key == SDLK_S)
+		{
+			SDL_Log("S key pressed");
+			transform.pos.y += 1000*delta_time;
+		}
+		else if (event.key.key == SDLK_A)
+		{
+			SDL_Log("A key pressed");
+			transform.pos.x -= 1000*delta_time;
+		}
+		else if (event.key.key == SDLK_D)
+		{
+			SDL_Log("delta_time = %f", delta_time);
+			SDL_Log("D key pressed");
+			transform.pos.x += 1000*delta_time;
+			SDL_Log("Player position: (%f, %f)", transform.pos.x, transform.pos.y);
+		}
 	}
 }

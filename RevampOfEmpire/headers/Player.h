@@ -9,7 +9,7 @@
 class Player : public Engine::Node
 {
 public:
-	Player(SDL_Renderer* renderer_, Engine::Engines& engine);
+	Player(SDL_Renderer* renderer_, Engine::Engines& engine, float delta_time);
 
 	~Player();
 
@@ -17,6 +17,7 @@ public:
 
 	void Update() override;
 
+	void HandleInput(const SDL_Event& event) override;
 private:
 	Engine::Collider* collider;
 	Engine::Animated* animated;

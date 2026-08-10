@@ -48,6 +48,7 @@ int main()
 		{
 			if (event.type == SDL_EVENT_QUIT)
 				running = false;
+			manager->HandleInput(event);
 		}
 
 		SDL_RenderClear(renderer);

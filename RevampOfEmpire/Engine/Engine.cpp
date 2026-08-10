@@ -3,14 +3,16 @@
 namespace Engine
 {
 	Engines::Engines()
-		: collisionManager(), fps()
+		: collisionManager(), 
+		fps()
 	{
 	}
-	void Engines::Run()
+	void Engines::Initialize()
 	{
 		collisionManager.Update();
 		fps.Update();
 	}
+
 	CollisionManager Engines::GetCollisionManager() const
 	{
 		return collisionManager;

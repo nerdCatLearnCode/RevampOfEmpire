@@ -10,11 +10,12 @@ namespace Engine
 	public:
 		Engines();
 
-		void Run();
+		void Initialize();
 
 		void Node();
 
 		CollisionManager GetCollisionManager() const;
+
 
 		FPS GetFPS() const;
 

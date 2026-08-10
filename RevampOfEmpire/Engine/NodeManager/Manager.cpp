@@ -5,15 +5,27 @@ namespace NodeManager
 	Manager::Manager(SDL_Renderer* renderer_)
 		: renderer(renderer_)
 	{
-		nodes.push_back(std::make_unique<Player>(renderer_, engine));
+		nodes.push_back(std::make_unique<Player>(renderer_, engine, engine.GetFPS().GetDeltaTime()));
 	}
 
 	void Manager::Update()
 	{
+		engine.Initialize();
+		float dt = engine.GetFPS().GetDeltaTime();
+
 		for (auto& node : nodes)
 		{
+			node->SetDeltaTime(dt);
 			node->Update();
 			node->Render();
+		}
+	}
+
+	void Manager::HandleInput(const SDL_Event& event)
+	{
+		for (auto& node : nodes)
+		{
+			node->HandleInput(event);
 		}
 	}
 	
