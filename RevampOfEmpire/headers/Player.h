@@ -25,6 +25,8 @@ private:
 
 	float fps;
 
+	bool W, A, S, D;
+
 	SDL_Renderer* renderer;
 };
 

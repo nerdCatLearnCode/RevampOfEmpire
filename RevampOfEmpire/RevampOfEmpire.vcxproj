@@ -152,6 +152,7 @@
     <ClCompile Include="Engine\TypeInput\Type.cpp" />
     <ClCompile Include="RevampOfEmpire.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="Engine\Input\TypeInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Animated\Animated.h" />
@@ -161,7 +162,6 @@
     <ClInclude Include="Engine\Collision\type.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\FPS\fps.h" />
-    <ClInclude Include="Engine\Input\Input.h" />
     <ClInclude Include="Engine\Math\Vector2.h" />
     <ClInclude Include="Engine\Node\Node.h" />
     <ClInclude Include="Engine\Node\Transform\Transform.h" />
@@ -169,6 +169,7 @@
     <ClInclude Include="Engine\TypeInput\Type.h" />
     <ClInclude Include="headers\Player.h" />
     <ClInclude Include="Engine\NodeManager\Manager.h" />
+    <ClInclude Include="Engine\Input\TypeInput.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\texture\Idle-Sheet.png" />

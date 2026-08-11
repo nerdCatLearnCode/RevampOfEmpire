@@ -6,7 +6,8 @@ Player::Player(SDL_Renderer* renderer_, Engine::Engines& engine, float delta_tim
 	: Node(delta_time),
 	renderer(renderer_),
 	engine(&engine),
-	fps(12.0f)
+	fps(12.0f),
+	W(false), A(false), S(false), D(false)
 {
 	collider = new Engine::Collider;
 	animated = new Engine::Animated(64, 80, 64*4, 80);
@@ -87,33 +88,66 @@ void Player::Update()
 	{
 		SDL_Log("collide!");
 	}
+
+	if (W)
+	{
+		transform.pos.y -= 1000 * delta_time;
+	}
+	if (A)
+	{
+		transform.pos.x -= 1000 * delta_time;
+	}
+	if (S)
+	{
+		transform.pos.y += 1000 * delta_time;
+	}
+	if (D)
+	{
+		transform.pos.x += 1000 * delta_time;
+	}
 }
 
 void Player::HandleInput(const SDL_Event& event)
 {
 	if (event.type == SDL_EVENT_KEY_DOWN)
 	{
-		if (event.key.key == SDLK_W)
+		switch (event.key.key)
 		{
-			SDL_Log("W key pressed");
-			transform.pos.y -= 1000*delta_time;
-		}
-		else if (event.key.key == SDLK_S)
-		{
-			SDL_Log("S key pressed");
-			transform.pos.y += 1000*delta_time;
-		}
-		else if (event.key.key == SDLK_A)
-		{
-			SDL_Log("A key pressed");
-			transform.pos.x -= 1000*delta_time;
-		}
-		else if (event.key.key == SDLK_D)
-		{
-			SDL_Log("delta_time = %f", delta_time);
-			SDL_Log("D key pressed");
-			transform.pos.x += 1000*delta_time;
-			SDL_Log("Player position: (%f, %f)", transform.pos.x, transform.pos.y);
+		case SDLK_W:
+			W = true;
+			break;
+		case SDLK_A:
+			A = true;
+			break;
+		case SDLK_S:
+			S = true;
+			break;
+		case SDLK_D:
+			D = true;
+			break;
+		default:
+			break;
 		}
 	}
+	else if (event.type == SDL_EVENT_KEY_UP)
+	{
+		switch (event.key.key)
+		{
+		case SDLK_W:
+			W = false;
+			break;
+		case SDLK_A:
+			A = false;
+			break;
+		case SDLK_S:
+			S = false;
+			break;
+		case SDLK_D:
+			D = false;
+			break;
+		default:
+			break;
+		}
+	}
+	
 }

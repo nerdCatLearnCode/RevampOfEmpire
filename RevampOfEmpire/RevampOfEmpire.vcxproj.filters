@@ -45,6 +45,9 @@
     <ClCompile Include="Engine\TypeInput\Type.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Input\TypeInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Collision\Collision.h">
@@ -86,10 +89,10 @@
     <ClInclude Include="Engine\Node\Transform\Transform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Input\Input.h">
+    <ClInclude Include="Engine\TypeInput\Type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\TypeInput\Type.h">
+    <ClInclude Include="Engine\Input\TypeInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
