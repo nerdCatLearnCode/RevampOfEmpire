@@ -17,6 +17,8 @@ public:
 
 	void Update() override;
 
+	int GetZ() override;
+
 	void HandleInput(const SDL_Event& event) override;
 private:
 	Engine::Collider* collider;

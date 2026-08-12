@@ -15,9 +15,9 @@ Player::Player(SDL_Renderer* renderer_, Engine::Engines& engine, float delta_tim
 	animated->PlayRange(0, 0, 64 * 4, 80, fps);
 	animated->SetMode(Mode::Loop);
 
-	SetZIndex(1);
-	SetScale({ -2, 2 });
-
+	
+	transform.scale = { 1, 1 };
+	rendering->z_index = 1;
 
 	transform.pos.x = transform.pos.y = 512;
 
@@ -69,8 +69,8 @@ void Player::Render()
 	{
 		transform.pos.x,
 		transform.pos.y,
-		transform.size.w * GetScale().x,
-		transform.size.h * GetScale().y
+		transform.size.w * transform.scale.x,
+		transform.size.h * transform.scale.y
 	};
 
 	sprite.Render(src, dst);
@@ -79,6 +79,7 @@ void Player::Render()
 void Player::Update()
 {
 	animated->Update();
+	rendering->Update();
 	collider->pos =
 	{
 		transform.pos.x,
@@ -89,22 +90,21 @@ void Player::Update()
 		SDL_Log("collide!");
 	}
 
-	if (W)
+	if (D)
 	{
-		transform.pos.y -= 1000 * delta_time;
+		transform.pos.x += 1000 * delta_time;
+		rendering->flip_h = false;
 	}
 	if (A)
 	{
 		transform.pos.x -= 1000 * delta_time;
+		rendering->flip_h = true;
 	}
-	if (S)
-	{
-		transform.pos.y += 1000 * delta_time;
-	}
-	if (D)
-	{
-		transform.pos.x += 1000 * delta_time;
-	}
+}
+
+int Player::GetZ()
+{
+	return rendering->z_index;
 }
 
 void Player::HandleInput(const SDL_Event& event)

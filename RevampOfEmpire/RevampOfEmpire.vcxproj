@@ -147,6 +147,7 @@
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\FPS\fps.cpp" />
     <ClCompile Include="Engine\Node\Node.cpp" />
+    <ClCompile Include="Engine\Node\Rendering\Rendering.cpp" />
     <ClCompile Include="Engine\Texture\Texture.cpp" />
     <ClCompile Include="Engine\NodeManager\Manager.cpp" />
     <ClCompile Include="Engine\TypeInput\Type.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Engine\FPS\fps.h" />
     <ClInclude Include="Engine\Math\Vector2.h" />
     <ClInclude Include="Engine\Node\Node.h" />
+    <ClInclude Include="Engine\Node\Rendering\Rendering.h" />
     <ClInclude Include="Engine\Node\Transform\Transform.h" />
     <ClInclude Include="Engine\Texture\Texture.h" />
     <ClInclude Include="Engine\TypeInput\Type.h" />

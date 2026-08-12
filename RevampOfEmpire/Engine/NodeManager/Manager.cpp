@@ -15,7 +15,7 @@ namespace NodeManager
 
 		for (auto& node : nodes)
 		{
-			node->SetDeltaTime(dt);
+			node->delta_time = dt;
 			node->Update();
 			node->Render();
 		}
