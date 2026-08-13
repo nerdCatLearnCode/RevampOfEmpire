@@ -51,6 +51,9 @@
     <ClCompile Include="Engine\Node\Rendering\Rendering.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Animated\AnimatedManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Collision\Collision.h">
@@ -101,9 +104,15 @@
     <ClInclude Include="Engine\Node\Rendering\Rendering.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Animated\AnimatedManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\texture\Idle-Sheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\texture\Run-Sheet.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -32,6 +32,11 @@ namespace Engine
             SDL_DestroySurface(surface_);
 	}
 
+    void RenderTexture::SetSurface(SDL_Surface* surface_)
+    {
+        this->surface_ = surface_;
+    }
+
 	void RenderTexture::Render(SDL_FRect src, SDL_FRect dsl)
 	{
 		SDL_RenderTexture(renderer_, texture_, &src, &dsl);

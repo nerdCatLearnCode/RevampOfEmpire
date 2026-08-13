@@ -18,14 +18,7 @@ namespace NodeManager
 			node->delta_time = dt;
 			node->Update();
 			node->Render();
-		}
-	}
-
-	void Manager::HandleInput(const SDL_Event& event)
-	{
-		for (auto& node : nodes)
-		{
-			node->HandleInput(event);
+			node->UpdateEvent();
 		}
 	}
 	

@@ -13,6 +13,8 @@ namespace Engine
 
 		void Render(SDL_FRect src, SDL_FRect dsl);
 
+		void SetSurface(SDL_Surface* surface_);
+
 		RenderTexture(const RenderTexture&) = delete;
 		RenderTexture& operator=(const RenderTexture&) = delete;
 

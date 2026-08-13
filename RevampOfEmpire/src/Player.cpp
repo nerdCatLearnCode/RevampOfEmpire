@@ -7,16 +7,22 @@ Player::Player(SDL_Renderer* renderer_, Engine::Engines& engine, float delta_tim
 	renderer(renderer_),
 	engine(&engine),
 	fps(12.0f),
-	W(false), A(false), S(false), D(false)
+	W(false), A(false), S(false), D(false),
+	input(new Input()),
+	idle(new Engine::RenderTexture(renderer_, IMG_Load("D:/CppProject/RevampOfEmpire/RevampOfEmpire/assets/texture/Idle-Sheet.png"))),
+	run(new Engine::RenderTexture(renderer_, IMG_Load("D:/CppProject/RevampOfEmpire/RevampOfEmpire/assets/texture/Run-Sheet.png")))
 {
 	collider = new Engine::Collider;
-	animated = new Engine::Animated(64, 80, 64*4, 80);
+	animated = new Engine::Animated(64, 80, 64 * 4, 80);
+	runAnimation = new Engine::Animated(80, 80, 80 * 8, 80);
 
 	animated->PlayRange(0, 0, 64 * 4, 80, fps);
 	animated->SetMode(Mode::Loop);
+	runAnimation->PlayRange(0, 0, 80 * 8, 80, 16);
+	runAnimation->SetMode(Mode::Loop);
 
-	
-	transform.scale = { 1, 1 };
+
+	transform.scale = { 2, 2 };
 	rendering->z_index = 1;
 
 	transform.pos.x = transform.pos.y = 512;
@@ -41,21 +47,48 @@ Player::Player(SDL_Renderer* renderer_, Engine::Engines& engine, float delta_tim
 	collider->id = "player";
 
 	engine.GetCollisionManager().Add(collider);
+
+	animationManager.CreateAnimation(*runAnimation);
+	animationManager.CreateAnimation(*animated);
+	animationManager.Play(*animated);
 }
 
 Player::~Player()
 {
 	engine->GetCollisionManager().Remove(collider);
+
+	animationManager.RemoveAnimation(*runAnimation);
+	animationManager.RemoveAnimation(*animated);
+
+	delete runAnimation;
+	delete input;
 	delete collider;
+	delete idle;
+	delete run;
 	delete animated;
 }
 
 void Player::Render()
 {
-	Engine::RenderTexture sprite(renderer, IMG_Load("D:/CppProject/RevampOfEmpire/RevampOfEmpire/assets/texture/Idle-Sheet.png"));
+	Engine::RenderTexture* sprite;
 
-	transform.src.x = animated->GetSrcX();
-	transform.src.y = animated->GetSrcY();
+	if (input->KeyHeld(SDL_SCANCODE_A) ||
+		input->KeyHeld(SDL_SCANCODE_D))
+	{
+		sprite = run;
+
+		transform.src.x = runAnimation->GetSrcX();
+		transform.src.y = runAnimation->GetSrcY();
+
+
+	}
+	else
+	{
+		sprite = idle;
+
+		transform.src.x = animated->GetSrcX();
+		transform.src.y = animated->GetSrcY();
+	}
 
 	SDL_FRect src =
 	{
@@ -73,33 +106,32 @@ void Player::Render()
 		transform.size.h * transform.scale.y
 	};
 
-	sprite.Render(src, dst);
+	sprite->Render(src, dst);
 }
 
 void Player::Update()
 {
-	animated->Update();
+	input->Update();
+
+	if (input->KeyHeld(SDL_SCANCODE_A) ||
+		input->KeyHeld(SDL_SCANCODE_D))
+	{
+		animationManager.Play(*runAnimation);
+	}
+	else
+	{
+		animationManager.Play(*animated);
+	}
+
+	animationManager.Update();
+
 	rendering->Update();
+
 	collider->pos =
 	{
 		transform.pos.x,
 		transform.pos.y
 	};
-	if (!collider->isCollide)
-	{
-		SDL_Log("collide!");
-	}
-
-	if (D)
-	{
-		transform.pos.x += 1000 * delta_time;
-		rendering->flip_h = false;
-	}
-	if (A)
-	{
-		transform.pos.x -= 1000 * delta_time;
-		rendering->flip_h = true;
-	}
 }
 
 int Player::GetZ()
@@ -107,47 +139,16 @@ int Player::GetZ()
 	return rendering->z_index;
 }
 
-void Player::HandleInput(const SDL_Event& event)
+void Player::UpdateEvent()
 {
-	if (event.type == SDL_EVENT_KEY_DOWN)
+	if (input->KeyHeld(SDL_SCANCODE_A))
 	{
-		switch (event.key.key)
-		{
-		case SDLK_W:
-			W = true;
-			break;
-		case SDLK_A:
-			A = true;
-			break;
-		case SDLK_S:
-			S = true;
-			break;
-		case SDLK_D:
-			D = true;
-			break;
-		default:
-			break;
-		}
+		transform.pos.x -= 1000 * delta_time;
+		rendering->flip_h = true;
 	}
-	else if (event.type == SDL_EVENT_KEY_UP)
+	if (input->KeyHeld(SDL_SCANCODE_D))
 	{
-		switch (event.key.key)
-		{
-		case SDLK_W:
-			W = false;
-			break;
-		case SDLK_A:
-			A = false;
-			break;
-		case SDLK_S:
-			S = false;
-			break;
-		case SDLK_D:
-			D = false;
-			break;
-		default:
-			break;
-		}
+		transform.pos.x += 1000 * delta_time;
+		rendering->flip_h = false;
 	}
-	
 }

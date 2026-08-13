@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Node/Transform/Transform.h>
+#include <cmath>
 
 class Rendering
 {

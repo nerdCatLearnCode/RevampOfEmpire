@@ -19,6 +19,8 @@ namespace Engine
 		float GetSrcX() const;
 		float GetSrcY() const;
 
+		void SetMapSize(float MapSizeX, float MapSizeY);
+
 	private:
 		Uint64 lastTime;
 		Uint64 currentTime;

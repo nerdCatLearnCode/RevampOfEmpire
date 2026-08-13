@@ -5,6 +5,7 @@
 #include <Animated/Animated.h>
 #include <Node/Node.h>
 #include <Engine.h>
+#include <TypeInput/Type.h>
 
 class Player : public Engine::Node
 {
@@ -17,15 +18,22 @@ public:
 
 	void Update() override;
 
-	int GetZ() override;
+	void UpdateEvent() override;
 
-	void HandleInput(const SDL_Event& event) override;
+	int GetZ() override;
 private:
 	Engine::Collider* collider;
 	Engine::Animated* animated;
 	Engine::Engines* engine;
+	Engine::Input* input;
 
 	float fps;
+	bool isRunning = false;
+
+	Engine::RenderTexture* idle;
+	Engine::RenderTexture* run;
+
+	Engine::Animated* runAnimation;
 
 	bool W, A, S, D;
 

@@ -78,5 +78,11 @@ namespace Engine
 	{
 		isPlaying = play;
 	}
+
+	void Animated::SetMapSize(float MapSizeX, float MapSizeY)
+	{
+		this->mapSizeX = MapSizeX;
+		this->mapSizeY = MapSizeY;
+	}
 	
 }
