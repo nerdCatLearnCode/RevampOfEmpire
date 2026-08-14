@@ -176,6 +176,7 @@
     <ClInclude Include="Engine\Input\TypeInput.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\texture\Attack-01-Sheet.png" />
     <Image Include="assets\texture\Idle-Sheet.png" />
     <Image Include="assets\texture\Run-Sheet.png" />
   </ItemGroup>

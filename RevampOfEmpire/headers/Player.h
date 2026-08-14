@@ -32,8 +32,10 @@ private:
 
 	Engine::RenderTexture* idle;
 	Engine::RenderTexture* run;
+	Engine::RenderTexture* attack;
 
 	Engine::Animated* runAnimation;
+	Engine::Animated* attackAnimation;
 
 	bool W, A, S, D;
 
