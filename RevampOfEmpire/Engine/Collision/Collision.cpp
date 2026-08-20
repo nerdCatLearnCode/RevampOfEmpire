@@ -19,6 +19,11 @@ namespace Engine
 
 	void CollisionManager::Update()
 	{
+		for (auto collider : Colliders)
+		{
+			collider->CWSB.clear();
+		}
+
 		for (size_t i = 0; i < Colliders.size();i++)
 		{
 			for (size_t j = i + 1; j < Colliders.size();j++)
@@ -33,8 +38,11 @@ namespace Engine
 				{
 					SDL_Log("COLLISION!");
 
-					Colliders[i]->isCollide = false;
-					Colliders[j]->isCollide = false;
+					Colliders[i]->isCollide = true;
+					Colliders[j]->isCollide = true;
+
+					Colliders[i]->CWSB.push_back(Colliders[j]->id.c_str());
+					Colliders[j]->CWSB.push_back(Colliders[i]->id.c_str());
 				}
 			}
 		}

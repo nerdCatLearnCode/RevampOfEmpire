@@ -14,8 +14,9 @@ namespace Engine
 		Vector2 pos;
 		Vector2 size;
 
-		bool isCollide = true;
+		bool isCollide = false;
 		std::string id;
+		std::vector<std::string> CWSB;
 	};
 
 	class CollisionManager
