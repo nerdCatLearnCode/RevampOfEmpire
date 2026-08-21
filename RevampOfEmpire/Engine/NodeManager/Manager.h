@@ -24,6 +24,7 @@ namespace NodeManager
 		std::vector<std::unique_ptr<Engine::Node>>& GetNodes();
 
 		virtual void Update() = 0;
+		virtual void Render() = 0;
 
 	private:
 		SDL_Renderer* renderer;

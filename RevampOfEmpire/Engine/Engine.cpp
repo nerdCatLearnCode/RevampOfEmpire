@@ -13,6 +13,7 @@ namespace Engine
 	{
 		collisionManager.Update();
 		fps.Update();
+		game.Update();
 	}
 
 	const CollisionManager& Engines::GetCollisionManager() const

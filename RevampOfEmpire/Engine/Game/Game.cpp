@@ -37,6 +37,7 @@ namespace Engine
 
 		it->second->ConstUpdate();
 		it->second->Update();
+		it->second->Render();
 	}
 
 }
