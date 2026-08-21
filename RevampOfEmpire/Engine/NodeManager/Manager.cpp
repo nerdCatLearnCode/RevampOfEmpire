@@ -1,4 +1,5 @@
-#include "Manager.h"			
+#include "Manager.h"	
+#include <Engine/Engine.h>
 			
 namespace NodeManager			
 {			
@@ -15,8 +16,7 @@ namespace NodeManager
 	}
 			
 	void Manager::ConstUpdate()		
-	{		
-		engine->Initialize();	
+	{
 		float dt = engine->GetFPS().GetDeltaTime();	
 			
 		for (auto& node : nodes)	

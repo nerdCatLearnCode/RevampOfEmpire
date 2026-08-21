@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <Engine/Engine.h>
 
 namespace Engine
 {
@@ -11,7 +12,6 @@ namespace Engine
 
 	void Game::AddLevel(std::string name, std::unique_ptr<NodeManager::Manager> level)
 	{
-		level = std::make_unique<NodeManager::Manager>(renderer, engine);
 
 		levels.insert({ std::move(name), std::move(level) });
 	}

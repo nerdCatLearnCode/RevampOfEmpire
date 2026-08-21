@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SDL3/SDL.h>
-#include <NodeManager/Manager.h>
+#include <Engine/Engine.h>
+#include <Game/Game.h>
 
 
 bool running = true;
@@ -40,6 +41,7 @@ int main()
 	SDL_Event event;
 	
 	//engine
+	Engine::Engines engine(renderer);
 
 	while (running)
 	{
@@ -52,6 +54,7 @@ int main()
 		SDL_RenderClear(renderer);
 
 		//Update
+		engine.Initialize();
 
 		SDL_RenderPresent(renderer);
 	}

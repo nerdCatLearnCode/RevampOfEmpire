@@ -9,6 +9,8 @@
 
 namespace Engine
 {
+	class Engines;
+
 	class Game
 	{
 	public:

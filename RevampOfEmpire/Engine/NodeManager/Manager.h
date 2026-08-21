@@ -1,14 +1,19 @@
 #pragma once
 
 #include <SDL3/SDL.h>
-#include <Engine.h>
 #include <memory>
 #include <vector>
 #include <iostream>
 #include <Node/Node.h>
 
+namespace Engine
+{
+	class Engines;
+}
+
 namespace NodeManager
 {
+
 	class Manager
 	{
 	public:
