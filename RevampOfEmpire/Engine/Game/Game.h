@@ -15,11 +15,11 @@ namespace Engine
 		Game(SDL_Renderer* renderer, Engine::Engines& engine);
 		~Game() = default;
 
-		void Add(std::string name, std::unique_ptr<NodeManager::Manager> level);
+		void AddLevel(std::string name, std::unique_ptr<NodeManager::Manager> level);
 
 		void PlayLevel(const std::string name);
 
-		void Remove(std::string name);
+		void RemoveLevel(std::string name);
 
 		void Update();
 

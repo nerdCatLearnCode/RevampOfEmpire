@@ -2,9 +2,11 @@
 
 namespace Engine
 {
-	Engines::Engines()
-		: collisionManager(), 
-		fps()
+	Engines::Engines(SDL_Renderer* renderer)
+		: collisionManager(),
+		fps(),
+		game(renderer, *this),
+		renderer(renderer)
 	{
 	}
 	void Engines::Initialize()
@@ -13,12 +15,14 @@ namespace Engine
 		fps.Update();
 	}
 
-	CollisionManager Engines::GetCollisionManager() const
+	const CollisionManager& Engines::GetCollisionManager() const
 	{
 		return collisionManager;
 	}
-	FPS Engines::GetFPS() const
+	const FPS& Engines::GetFPS() const
 	{
 		return fps;
 	}
+
+
 }

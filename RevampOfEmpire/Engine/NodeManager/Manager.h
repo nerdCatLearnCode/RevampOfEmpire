@@ -13,8 +13,13 @@ namespace NodeManager
 	{
 	public:
 		Manager(SDL_Renderer* renderer_, Engine::Engines& engine);
-		void Update();
+		~Manager() = default;
+		void ConstUpdate();
 		
+		std::vector<std::unique_ptr<Engine::Node>>& GetNodes();
+
+		virtual void Update() = 0;
+
 	private:
 		SDL_Renderer* renderer;
 		Engine::Engines* engine;

@@ -2,25 +2,32 @@
 
 #include <Collision/Collision.h>
 #include <FPS/FPS.h>
+#include <Game/Game.h>
 
 namespace Engine
 {
 	class Engines
 	{
 	public:
-		Engines();
+		Engines(SDL_Renderer* renderer);
 
 		void Initialize();
 
 		void Node();
 
-		CollisionManager GetCollisionManager() const;
+		const CollisionManager& GetCollisionManager() const;
 
 
-		FPS GetFPS() const;
+		const FPS& GetFPS() const;
+
+		Game& GetGame();
+		const Game& GetGame() const;
 
 	private:
 		CollisionManager collisionManager;
 		FPS fps;
+		Game game;
+
+		SDL_Renderer* renderer;
 	};
 }

@@ -7,9 +7,14 @@ namespace NodeManager
 		engine(&engine)
 	{		
 			
-	}		
+	}	
+
+	std::vector<std::unique_ptr<Engine::Node>>& Manager::GetNodes() 
+	{
+		return nodes;
+	}
 			
-	void Manager::Update()		
+	void Manager::ConstUpdate()		
 	{		
 		engine->Initialize();	
 		float dt = engine->GetFPS().GetDeltaTime();	

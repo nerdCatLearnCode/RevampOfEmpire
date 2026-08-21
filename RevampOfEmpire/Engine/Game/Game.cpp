@@ -9,14 +9,14 @@ namespace Engine
 
 	}
 
-	void Game::Add(std::string name, std::unique_ptr<NodeManager::Manager> level)
+	void Game::AddLevel(std::string name, std::unique_ptr<NodeManager::Manager> level)
 	{
 		level = std::make_unique<NodeManager::Manager>(renderer, engine);
 
 		levels.insert({ std::move(name), std::move(level) });
 	}
 
-	void Game::Remove(std::string name)
+	void Game::RemoveLevel(std::string name)
 	{
 		levels.erase(name);
 	}
@@ -26,5 +26,17 @@ namespace Engine
 		this->playingLevel = name;
 	}
 
+	void Game::Update()
+	{
+		auto it = levels.find(playingLevel);
+
+		if (it == levels.end())
+		{
+			return;
+		}
+
+		it->second->ConstUpdate();
+		it->second->Update();
+	}
 
 }

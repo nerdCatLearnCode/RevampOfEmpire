@@ -147,6 +147,7 @@
     <ClCompile Include="Engine\Collision\Collision.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\FPS\fps.cpp" />
+    <ClCompile Include="Engine\GameInstance.cpp" />
     <ClCompile Include="Engine\MouseInput\MouseInput.cpp" />
     <ClCompile Include="Engine\Node\Node.cpp" />
     <ClCompile Include="Engine\Node\Rendering\Rendering.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Engine\Collision\type.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\FPS\fps.h" />
+    <ClInclude Include="Engine\GameInstance.h" />
     <ClInclude Include="Engine\Game\Game.h" />
     <ClInclude Include="Engine\Math\Vector2.h" />
     <ClInclude Include="Engine\MouseInput\MouseInput.h" />

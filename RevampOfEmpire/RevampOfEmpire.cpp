@@ -40,7 +40,6 @@ int main()
 	SDL_Event event;
 	
 	//engine
-	NodeManager::Manager* manager = new NodeManager::Manager(renderer);
 
 	while (running)
 	{
@@ -53,12 +52,10 @@ int main()
 		SDL_RenderClear(renderer);
 
 		//Update
-		manager->Update();
 
 		SDL_RenderPresent(renderer);
 	}
 
-	delete manager;
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 
