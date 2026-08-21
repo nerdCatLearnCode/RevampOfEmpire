@@ -4,6 +4,7 @@
 #include <Math/Vector2.h>
 #include <Node/Transform/Transform.h>
 #include <FPS/fps.h>
+#include <MouseInput/MouseInput.h>
 #include <Node/Rendering/Rendering.h>
 #include <Animated/AnimatedManager.h>
 
@@ -26,6 +27,7 @@ namespace Engine
 		Transform transform;
 		Rendering* rendering;
 		AnimatedManager animationManager;
+		MouseInput mouse;
 		float delta_time;
 	};
 }

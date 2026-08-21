@@ -41,8 +41,8 @@ namespace Engine
 					Colliders[i]->isCollide = true;
 					Colliders[j]->isCollide = true;
 
-					Colliders[i]->CWSB.push_back(Colliders[j]->id.c_str());
-					Colliders[j]->CWSB.push_back(Colliders[i]->id.c_str());
+					Colliders[i]->CWSB.push_back(Colliders[j]->id);
+					Colliders[j]->CWSB.push_back(Colliders[i]->id);
 				}
 			}
 		}

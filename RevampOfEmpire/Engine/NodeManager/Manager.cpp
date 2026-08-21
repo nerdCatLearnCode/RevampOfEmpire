@@ -2,16 +2,17 @@
 			
 namespace NodeManager			
 {			
-	Manager::Manager(SDL_Renderer* renderer_)		
-		: renderer(renderer_)	
+	Manager::Manager(SDL_Renderer* renderer_, Engine::Engines& engine)		
+		: renderer(renderer_),
+		engine(&engine)
 	{		
 			
 	}		
 			
 	void Manager::Update()		
 	{		
-		engine.Initialize();	
-		float dt = engine.GetFPS().GetDeltaTime();	
+		engine->Initialize();	
+		float dt = engine->GetFPS().GetDeltaTime();	
 			
 		for (auto& node : nodes)	
 		{	

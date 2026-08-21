@@ -12,12 +12,12 @@ namespace NodeManager
 	class Manager
 	{
 	public:
-		Manager(SDL_Renderer* renderer_);
+		Manager(SDL_Renderer* renderer_, Engine::Engines& engine);
 		void Update();
-		void HandleInput(const SDL_Event& event);
+		
 	private:
 		SDL_Renderer* renderer;
-		Engine::Engines engine;
+		Engine::Engines* engine;
 		SDL_Event* event;
 
 		std::vector<std::unique_ptr<Engine::Node>> nodes;
